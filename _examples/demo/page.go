@@ -918,6 +918,10 @@ func openWindow(res *uiResources, ui func() *ebitenui.UI) {
 	)
 	bc.AddChild(cb)
 
+	bc.AddChild(newCheckbox("Disabled", func(args *widget.CheckboxChangedEventArgs) {
+		t.GetWidget().Disabled = args.State == widget.WidgetChecked
+	}, res))
+
 	window = widget.NewWindow(
 		widget.WindowOpts.Modal(),
 		widget.WindowOpts.Contents(c),
